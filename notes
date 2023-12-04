@@ -1,0 +1,20 @@
+p {
+    color: #FF000
+}
+body {
+    padding: 0
+    margin: 0
+}
+Class Selectors: (think like method assignments in Python)
+.has-blue-text {
+    color: #FF0000
+}
+Id selectors: Id can only be specific to one html tab.
+#main-navigation {
+    background-color: orange
+}
+Specificity
+ID = 1 (only possible to use on one element, and trumps everything)
+Class = many (2nd highest specifity and trumps tag specificity, if multiple classes, renders in order of css file)
+Tag = (standard applies to all instances of tag)
+
