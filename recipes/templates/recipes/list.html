@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Scrumptious Recipes
+{%endblock title%}
+
+{% block content%}
+<header>
+  <nav class="heading">
+    <a href="{% url 'recipe_list' %}">Main Page</a>
+    {% if user.is_authenticated %}
+    <a href="{% url 'create_recipe' %}">Create a Recipe</a>
+      Hello, {{ user.username }}
+    <a href="{% url 'my_recipe_list' %}">My Recipes</a>
+    <a href="{% url 'user_logout' %}">Logout</a>
+    {% else %}
+      <a href="{% url 'signup' %}">Sign up</a>
+      <a href="{% url 'user_login' %}">Login</a>
+    {% endif %}  
+  </nav>
+</header>
+<main>
+  <h1 class="center">Scrumptious Recipes</h1>
+  <h2 class="recipe-title">All the food that's fit to eat</h2>
+  <div class="grid-container">
+      {% for recipe in recipe_list %}
+    <div>
+      <h3>
+        <a class='recipe-title' href="{% url 'show_recipe' recipe.id %}">{{ recipe.title }}</a>
+      </h3>
+      <img class="img_large" src="{{ recipe.picture }}">
+      <p>{{ recipe.created_on|date:"F Y" }}</p>
+      <div>4.3 stars</div>
+    </div>
+      {% endfor %}
+  </div>
+</main>
+{% endblock content %}
+
+{% load static %}
